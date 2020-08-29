@@ -1,0 +1,23 @@
+import requests
+import json
+import pandas as pd
+
+
+url = "http://snipeit.birmingham.dom/api/v1/hardware"
+
+payload = {}
+files = {}
+headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBjN2E2ZTY4OTA4MDUxMjFhNTdmZmZkMWVjNjNiYjExOGE5ZTJkYzViYTFkYWYzYzkxOGIwODIwOGRhNDFkOTZlZGQ5Y2I2MTgwOTM4NjMzIn0.eyJhdWQiOiIxIiwianRpIjoiMGM3YTZlNjg5MDgwNTEyMWE1N2ZmZmQxZWM2M2JiMTE4YTllMmRjNWJhMWRhZjNjOTE4YjA4MjA4ZGE0MWQ5NmVkZDljYjYxODA5Mzg2MzMiLCJpYXQiOjE1OTc5MzMxNTYsIm5iZiI6MTU5NzkzMzE1NiwiZXhwIjoxNjI5NDY5MTU2LCJzdWIiOiIzNCIsInNjb3BlcyI6W119.YCxJnQXOGeEFo5yv0XAo5oJMMEWW74so-JG9OLRfcNcp6JOCsBf_s1rv9XDNGYPQZgBNT6Xn3lI2IwOs4n42jEYmALX8lcWaMxhZXFVGQoSwZHebHka3aJnV2C784oC4-L2m_0jMmP065wfczDRHCP3rL6MVmOjcEhW28s0i72BuJmQUP4_2yBpj3--Lr9HsvnEF0hiBZAm1ap9Cayzfj8EyyMKtaMb2KBWkUTY-VSOMTPnB98wGb3eP7J3o-1plFvye1_MGc3TeEkga3CuQBgu3hRs7YaA3XY-51lybd78Rdp6QmeLEM3YldhI2O_ySG6ViChfF3wGt53vyxfwdcVYzrJk1aAJMTt8pxm6NXJmAxnJNHfNAVl6PDc2XMtAJnJ9UDl-cwNWK6Cyql7TEpzNlAtmWiRrioIhWoOc7UBB-jaeqJT99i7KPJWoqLXAq5Pel2sVWaDkd0Q7apyuQYde3Yq4AwOiON1oiYZmmIsdxWFfiMy8HU7-ycwvw6C1XhtO39nHBzqeIGcXJwLRy77ABt8_Ebzzai89amXfp47cnNJJNTZzPCcB2E1DQweJCTd7i5t_uv_8bJfFVpJEpA6Z19XI69VwLK6tMsXrndw1t0QO_JYxf7IrAwN-Yl7lZd-q1yCO6atjm4gZyczrvNsIAq0pXHdEEK_BwsxJIta4',
+  'Cookie': 'snipeit_session=61KOGaPLlxgBbFIj5uPr5KM6XI3xCFAoXYlTeg1O; XSRF-TOKEN=eyJpdiI6IkRCSk9IdVZHakhoMEh4c082WjN0VUE9PSIsInZhbHVlIjoiemdLQjdTTENwOWhNRDZzaHRZQnNXcTNcL1Y1WFk1c0JoN0ZwUmFScCt3ZEk2VWRSaGlGYjBlcW16OEFtb1J0bGlFQ2ZnQzV2YklydFYxTjg5NHV0MkRBPT0iLCJtYWMiOiJjMjg2NzY5ZDViYjkzOTBlYzMwMjMyZmVlODZlMjUyMzYyZTU5MGYwNTZiYTUyY2UyNDZiZjBlYjZjYTQwYTFlIn0%3D'
+}
+
+response = requests.request("GET", url, headers=headers, data = payload, files = files)
+
+data = (response.json())
+
+df = pd.DataFrame(data['rows'])
+
+print(df)
